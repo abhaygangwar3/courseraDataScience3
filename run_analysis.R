@@ -4,14 +4,14 @@ library(dplyr)
 
 #Read all the relevant data from data sets provided in zipped file.
 
-x_train <- read.table("./data/UCI HAR Dataset/train/X_train.txt")
-y_train <- read.table("./data/UCI HAR Dataset/train/y_train.txt")
-x_test <- read.table("./data/UCI HAR Dataset/test/X_test.txt")
-y_test <- read.table("./data/UCI HAR Dataset/test/y_test.txt")
-sub_test <- read.table("./data/UCI HAR Dataset/test/subject_test.txt")
-sub_train <- read.table("./data/UCI HAR Dataset/train/subject_train.txt")
-activity_labels <- read.table("./data/UCI HAR Dataset/activity_labels.txt")
-features <- read.table("./data/UCI HAR Dataset/features.txt")
+x_train <- read.table("./UCI HAR Dataset/train/X_train.txt")
+y_train <- read.table("./UCI HAR Dataset/train/y_train.txt")
+x_test <- read.table("./UCI HAR Dataset/test/X_test.txt")
+y_test <- read.table("./UCI HAR Dataset/test/y_test.txt")
+sub_test <- read.table("./UCI HAR Dataset/test/subject_test.txt")
+sub_train <- read.table("./UCI HAR Dataset/train/subject_train.txt")
+activity_labels <- read.table("./UCI HAR Dataset/activity_labels.txt")
+features <- read.table("./UCI HAR Dataset/features.txt")
 
 #Combining all the data sets to create a merged one
 
@@ -35,4 +35,4 @@ final_1$Activity <- factor(final_1$Activity, labels = activity_labels[,2])
 #This is to create final data set with tidy data containing means of all the values grouped by activity and subject
 
 final_mean <- final_1 %>% group_by(Activity, Subject) %>% summarise_each(funs(mean))
-write.csv(final_mean, file = "./data/coursera_dataScience_3_assignment.csv")
+write.csv(final_mean, file = "coursera_dataScience_3_assignment.csv")
